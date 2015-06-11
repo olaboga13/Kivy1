@@ -1,0 +1,64 @@
+#:kivy 1.9.0
+#wyglad gry i jej elementow
+<Electron>:
+    size: 40, 50
+    canvas:
+        Color:
+            rgb: 1, 1, 0
+        Ellipse:
+            pos: self.pos
+            size: self.size
+
+
+<Magnet>:
+    size: 25, 200
+    canvas:
+        Color:
+            rgb: 0, 0, 1
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+<Game>:
+    electron: id_electron
+    player1: player_left
+    player2: player_right
+
+    canvas:
+        Color:
+            rgb: 0, 1, 0
+        Rectangle:
+            pos: self.center_x-5, 0
+            size: 10, self.height
+
+    Label:
+
+        font_size: 120
+        center_x: root.width / 4
+        top: root.top - 50
+        text: str(root.player1.score)
+
+    Label:
+        font_size: 120
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+        text: str(root.player2.score)
+
+
+    Electron:
+        id: id_electron
+        center: self.parent.center
+
+
+    Magnet:
+        id: player_left
+        x: root.x
+        center_y: root.center_y
+
+
+    Magnet:
+        id: player_right
+        x: root.width-self.width
+        center_y: root.center_y
+
+

@@ -1,0 +1,52 @@
+#:kivy 1.9.0
+# nadanie wlasciwosci zmiennym wykorzystanych w grze:
+# ustawienie wyswietlacza, pilki, paletek,
+
+<GraPong>:
+    pilka: pilka_pong
+    gracz1: gracz_lewy
+    gracz2: gracz_prawy
+
+    canvas:
+        Rectangle:
+            pos: self.center_x - 5, 0
+            size: 10, self.height
+
+    Label:
+        font_size: 120
+        center_x: root.width / 4
+        top: root.top - 50
+        text: str(root.gracz1.wynik)
+
+    Label:
+        font_size: 120
+        center_x: root.width * 3 / 4
+        top: root.top - 50
+        text: str(root.gracz2.wynik)
+
+    Pilka:
+        id: pilka_pong
+        center: self.parent.center
+
+    Paletka:
+        id: gracz_lewy
+        x: root.x
+        center_y: root.center_y
+    Paletka:
+        id: gracz_prawy
+        x: root.width - self.width
+        center_y: root.center_y
+
+<Paletka>:
+    size: 25, 200
+    canvas:
+        Rectangle:
+            pos:self.pos
+            size:self.size
+
+<Pilka>:
+    size: 50, 50
+    canvas:
+        Ellipse:
+            pos: self.pos
+            size: self.size
